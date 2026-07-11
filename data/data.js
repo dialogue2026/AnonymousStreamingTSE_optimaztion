@@ -61,3 +61,30 @@ const data_list_hcr = [
         "note":"Base Good Case: Maintains original performance without degradation."
     },
 ]
+
+const data_list_kernel = [
+    {
+        "mixed_speech": "demo/kernel_size/mix_clean/2300-131720-0024_7021-85628-0008.wav",
+        "ref_speech": "demo/kernel_size/ref/2300-131720-0024_7021-85628-0008.wav",
+        "k3": "demo/kernel_size/k3/2300-131720-0024_7021-85628-0008.wav",
+        "k15": "demo/kernel_size/k15/2300-131720-0024_7021-85628-0008.wav",
+        "ground_truth": "demo/kernel_size/gt/2300-131720-0024_7021-85628-0008.wav",
+        "note":"k=15 provides clearer and more accurate extraction than k=3."
+    },
+    {
+        "mixed_speech": "demo/kernel_size/mix_clean/5142-33396-0001_6930-76324-0005.wav",
+        "ref_speech": "demo/kernel_size/ref/5142-33396-0001_6930-76324-0005.wav",
+        "k3": "demo/kernel_size/k3/5142-33396-0001_6930-76324-0005.wav",
+        "k15": "demo/kernel_size/k15/5142-33396-0001_6930-76324-0005.wav",
+        "ground_truth": "demo/kernel_size/gt/5142-33396-0001_6930-76324-0005.wav",
+        "note":"k=15 provides clearer and more accurate extraction than k=3."
+    },
+    {
+        "mixed_speech": "demo/kernel_size/mix_clean/7021-85628-0016_3729-6852-0039.wav",
+        "ref_speech": "demo/kernel_size/ref/7021-85628-0016_3729-6852-0039.wav",
+        "k3": "demo/kernel_size/k3/7021-85628-0016_3729-6852-0039.wav",
+        "k15": "demo/kernel_size/k15/7021-85628-0016_3729-6852-0039.wav",
+        "ground_truth": "demo/kernel_size/gt/7021-85628-0016_3729-6852-0039.wav",
+        "note":"k=15 provides clearer and more accurate extraction than k=3."
+    },
+]

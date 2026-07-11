@@ -237,6 +237,60 @@
         </div>
     </div>
 
+    <div class="card2">
+        <h2 style="text-align: left;">Ablation on CNN Kernel Size</h2>
+        <p>
+            🎧Comparison of different CNN kernel sizes, k=15 provides a clearer and more accurate extraction than k=3.
+        </p>
+        Note: Under the 560ms chunk size constraint.
+        <div class="table_wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mixed Speech</th>
+                    <th>Reference Speech</th>
+                    <th>k=3 cnn</th>
+                    <th>k=15 cnn</th>
+                    <th>GroundTruth</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="i in items_kernel">
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.mixed_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ref_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.k3" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.k15" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ground_truth" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        {{ i.note }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
 </div>
 
@@ -245,7 +299,8 @@
         el: '#app',
         data: {
             items: data_list,
-            items_abaltion: data_list_hcr
+            items_abaltion: data_list_hcr,
+            items_kernel: data_list_kernel
         },
         methods: {
             myToFixed(v) {
