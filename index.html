@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="data/data.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <style>
+        #app {
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*align-items: center;*/
+            /*align-items: stretch;*/
+        }
+
+        tr {
+            line-height: 40px;
+        }
+
+        .table_wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse; 
+        }
+
+        td, th {
+            margin: 10px;
+            padding: 10px; 
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .title_area {
+            text-align: center;
+        }
+
+        .img_structure {
+            width: 1000px;
+            max-width: 60vw;
+        }
+
+        .card {
+            text-align: center;
+            margin: 2em;
+            padding: 2em;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
+
+        .card2 {
+            margin: 2em;
+            padding: 2em;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
+
+        .topper {
+            font-size: small;
+        }
+
+        /* .horizontal-container {
+            display: flex; 
+            width: 100%; 
+            gap: 100px; 
+            justify-content: center; 
+        }
+        
+        .horizontal-container .img_left {
+            width: 800px;
+            height: 350px;
+            box-sizing: border-box; 
+        }
+
+        .horizontal-container .img_right {
+            width: 500px;
+            height: 400px;
+            box-sizing: border-box; 
+        } */
+    </style>
+
+</head>
+<body>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},  
+                {left: '$', right: '$', display: false}   
+            ],
+            throwOnError : false
+        });"></script>
+
+<div id="app">
+    <div class="title_area">
+        <h1>
+            Breaking the Quality–Intelligibility Trade-off in Streaming Target Speaker Extraction via Deep-Feature-Anchored Preference Optimization
+        </h1>
+        <div>
+          anonymous authors
+        </div>
+    </div>
+
+
+
+    <div class="card2">
+        <h2 style="text-align: left;">Streaming Inference Comparison</h2>
+        <strong>🎧 Listen to the comparisons below across different model.</strong> Only StarTSE and Ours (Proposed) are designed for streaming(i.e. streaming aware).
+        <p>
+            Note: Under the 560ms chunk size constraint.
+        </p>
+        <div class="table_wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mixed Speech</th>
+                    <th>Reference Speech</th>
+                    <th>LauraTSE</th>
+                    <th>StarTSE</th>
+                    <th>Ours(Proposed)</th>
+                    <th>Ground Truth</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="i in items">
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.mixed_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ref_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.laura_tse" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.star_tse" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.our_proposed" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ground_truth" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        {{ i.note }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card2">
+        <h2 style="text-align: left;">Comparison of different DPO strategies </h2>
+        <p>
+            🎧Comparison of different DPO strategies, DPO_wavlm provides a clearer and more accurate.
+        </p>
+        Note: Under the 560ms chunk size constraint.
+        <div class="table_wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mixed Speech</th>
+                    <th>Reference Speech</th>
+                    <th>StarTSE(Base:w/ k=15 cnn)</th>
+                    <th>DPO_dnsmos</th>
+                    <th>DPO_wer</th>
+                    <th>DPO_wavlm(Proposed)</th>
+                    <th>GroundTruth</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="i in items_abaltion">
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.mixed_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ref_speech" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.star_tse_k15" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.DPO_dnsmos" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.dpo_wer" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.dpo_wavlm" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source :src="'data/'+i.ground_truth" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td>
+                        {{ i.note }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items: data_list,
+            items_abaltion: data_list_hcr
+        },
+        methods: {
+            myToFixed(v) {
+                try {
+                    return v.toFixed(2)
+                } catch (e) {
+                    return v
+                }
+            }
+
+        }
+    })
+</script>
+
+</body>
+</html>
